@@ -9,7 +9,7 @@ const getValueByKey = async (req : Request, res: Response) => {
     const key = req.params.key;
     
     const cacheItem = await CacheService.getCacheItemByKey(key, 'value expireAt');
-    Utils.sendSuccessResponse(res, cacheItem);
+    Utils.sendSuccessResponse(res, { value: cacheItem.value});
   }
   catch (error) {
     Logger.error(error);

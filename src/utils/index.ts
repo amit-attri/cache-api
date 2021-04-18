@@ -1,10 +1,10 @@
-import { v5 } from 'uuid';
+import { v4 } from 'uuid';
 import * as moment from 'moment';
 
 import Logger from './logger';
 
 const getRandomString = () => {
-  return v5();
+  return v4();
 };
 
 const getCurrentUtcTime = () => {
