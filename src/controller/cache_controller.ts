@@ -8,7 +8,8 @@ const Logger = Utils.Logger;
 const getValueByKey = async (req : Request, res: Response) => {
   try {
     const key = req.params.key;
-    
+    if(!key)
+      throw Exception.INVALID_KEY();
     const cacheItem = await CacheService.getCacheItemByKey(key, 'value expireAt');
     Utils.sendSuccessResponse(res, { value: cacheItem.value});
   }
