@@ -10,8 +10,8 @@ Pre-requisites
 Run:
 1. Set the MONGO_CACHE_DB_URL in process.env
 2. Set the SERVICE_PORT in process.env (Not mandatory, default is 8000)
-3. Set the MAX_CACHE_SIZE in process.env (Not mandatory, default is 20)
-4. Set the CACHE_TTL in process.env (Not mandatory, default is 5 (minutes))
+3. Set the MAX_CACHE_SIZE in process.env (Not mandatory, default is 5)
+4. Set the CACHE_TTL in process.env (Not mandatory, default is 1 (minutes))
 5. npm start
 
 Folder Structure
