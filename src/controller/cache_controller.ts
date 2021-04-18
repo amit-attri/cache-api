@@ -1,6 +1,7 @@
 import Utils from '../utils';
 import { Response, Request } from "express";
 import {CacheService} from "../service";
+import Exception from "../exception";
 
 const Logger = Utils.Logger;
 
@@ -27,7 +28,24 @@ const getAllCacheItems = async (req : Request, res: Response) => {
   }
 }
 
+const updateCacheValueByKey = async (req : Request, res: Response) => {
+  try {
+    const key = req.params.key;
+    if(!key)
+      throw Exception.INVALID_KEY();
+    const value = req.body.value;
+    if(!value)
+      throw Exception.INVALID_VALUE();
+    const updatedCacheItem = await CacheService.updateCacheValueByKey(key, value);
+    Utils.sendSuccessResponse(res, updatedCacheItem);
+  } catch (error) {
+    Logger.error(error);
+    Utils.handleErrorResponse(res, error);
+  }
+}
+
 export default {
   getValueByKey,
-  getAllCacheItems
+  getAllCacheItems,
+  updateCacheValueByKey
 }
