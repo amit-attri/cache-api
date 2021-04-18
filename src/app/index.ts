@@ -5,6 +5,9 @@ import * as bodyParser from'body-parser';
 import DBConnector from './db-connector';
 import Config from '../config';
 import Router from "../route";
+import Utils from "../utils";
+
+const Logger = Utils.Logger;
 
 
 const connectDatabases = async () => {
@@ -18,7 +21,7 @@ const addBodyParser = async () => {
 
 const listenPort = (PORT) => {
   app.listen( PORT, () =>
-    console.log(`Server running on http://localhost:${PORT}`)
+    Logger.info(`Server running on http://localhost:${PORT}`)
   );
 };
 
