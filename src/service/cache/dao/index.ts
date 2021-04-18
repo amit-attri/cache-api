@@ -9,13 +9,12 @@ const getByKey = async (key, requiredFields: string) : Promise<CacheItem> => {
   return await CacheModel.findOne({key}, requiredFields);
 };
 
-
 const getDocumentsCount = async () : Promise<Number> => {
   return await CacheModel.countDocuments();
 }
 
-const getAll = async () : Promise<CacheItem[]> => {
-  return await CacheModel.find().lean();
+const getAll = async (requiredFields: string) : Promise<CacheItem[]> => {
+  return await CacheModel.find({}, requiredFields).lean();
 };
 
 const findLeastRecentlyUsedKey = async () : Promise<CacheItem> => {

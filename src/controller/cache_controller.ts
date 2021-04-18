@@ -14,19 +14,19 @@ const getValueByKey = async (req : Request, res: Response) => {
   }
   catch (error) {
     Logger.error(error);
-    Utils.handleErrorResponse(res, error);
+    Utils.handleErrorResponse(res, error);  
   }
 };
 
 const getAllCacheItems = async (req : Request, res: Response) => {
   try {
-    const cacheItems = await CacheService.getAllCacheItems();
+    const cacheItems = await CacheService.getAllCacheItems('key value');
     Utils.sendSuccessResponse(res, cacheItems);
   } catch(error) {
     Logger.error(error);
     Utils.handleErrorResponse(res, error);
   }
-}
+};
 
 const updateCacheValueByKey = async (req : Request, res: Response) => {
   try {
@@ -44,8 +44,34 @@ const updateCacheValueByKey = async (req : Request, res: Response) => {
   }
 }
 
+const deleteCacheItem = async (req : Request, res: Response) => {
+  try {
+    const key = req.params.key;
+    if(!key)
+      throw Exception.INVALID_KEY();
+    await CacheService.deleteCacheItem(key);
+    Utils.sendSuccessResponse(res, {"success": true});
+  }
+  catch (error) {
+    Logger.error(error);
+    Utils.handleErrorResponse(res, error);
+  }
+}
+
+const deleteAllCacheItems = async (req : Request, res: Response) => {
+  try {
+    await CacheService.deleteAllCacheItems();
+    Utils.sendSuccessResponse(res, {"success": true});
+  } catch (error) {
+    Logger.error(error);
+    Utils.handleErrorResponse(res, error);
+  }
+}
+
 export default {
   getValueByKey,
   getAllCacheItems,
-  updateCacheValueByKey
+  updateCacheValueByKey,
+  deleteCacheItem,
+  deleteAllCacheItems
 }

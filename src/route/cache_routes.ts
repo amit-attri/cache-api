@@ -7,4 +7,7 @@ router.get('/', CacheController.getAllCacheItems);
 
 router.put('/:key', CacheController.updateCacheValueByKey);
 
+router.delete('/:key', CacheController.deleteCacheItem);
+router.delete('/', CacheController.deleteAllCacheItems);
+
 export default router;

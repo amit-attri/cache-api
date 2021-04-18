@@ -82,16 +82,26 @@ const getCacheItemByKey = async (key: string, requiredFields: string) : Promise<
   return handleCacheHit(cacheItem);
 };
 
-const getAllCacheItems = async () : Promise<CacheItem[]> => {
-  return await CacheDao.getAll();
+const getAllCacheItems = async (requiredFields : string) : Promise<CacheItem[]> => {
+  return await CacheDao.getAll(requiredFields);
 };
 
 const updateCacheValueByKey = async (key : string, value: string) : Promise<CacheItem> => {
   return await CacheDao.updateByKey(key, value);
 };
 
+const deleteCacheItem = async (key: string) => {
+  return await CacheDao.deleteByKey(key);
+};
+
+const deleteAllCacheItems = async () => {
+  return await CacheDao.deleteAll();
+};
+
 export default {
   getCacheItemByKey,
   getAllCacheItems,
-  updateCacheValueByKey
+  updateCacheValueByKey,
+  deleteCacheItem,
+  deleteAllCacheItems
 }
