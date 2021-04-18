@@ -4,6 +4,7 @@ import * as bodyParser from'body-parser';
 
 import DBConnector from './db-connector';
 import Config from '../config';
+import Router from "../route";
 
 
 const connectDatabases = async () => {
@@ -24,6 +25,7 @@ const listenPort = (PORT) => {
 const start = async () => {
   await connectDatabases();
   await addBodyParser();
+  await Router.initRoutes(app);
   await listenPort(Config.SERVICE_PORT);
 };
 
