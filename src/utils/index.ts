@@ -1,4 +1,15 @@
+import { v5 } from 'uuid';
+import * as moment from 'moment';
+
 import Logger from './logger';
+
+const getRandomString = () => {
+  return v5();
+};
+
+const getCurrentUtcTime = () => {
+  return moment.utc();
+};
 
 const sendSuccessResponse = (res, data) => {
   res.status(200).send(data);
@@ -11,5 +22,7 @@ const handleErrorResponse = (res, error) => {
 export default {
   sendSuccessResponse,
   handleErrorResponse,
-  Logger
+  Logger,
+  getRandomString,
+  getCurrentUtcTime
 }

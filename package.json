@@ -16,6 +16,8 @@
     "lodash": "4.17.15",
     "typescript": "4.0.3",
     "@types/node": "14.10.1",
-    "@types/babel__traverse": "7.0.8"
+    "@types/babel__traverse": "7.0.8",
+    "moment": "2.29.1",
+    "uuid": "8.3.2"
   }
 }
