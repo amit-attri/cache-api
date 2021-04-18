@@ -14,6 +14,9 @@ Run:
 4. Set the CACHE_TTL in process.env (Not mandatory, default is 1 (minutes))
 5. npm start
 
+Test:
+npm run test
+
 Folder Structure
 1. src/app : This module is responsible for initialising the service (DB connections, express layer, connecting to port etc)
 2. src/route: This module contains all the routes in application. Routes can be separated by entities (for example cache_routes)
