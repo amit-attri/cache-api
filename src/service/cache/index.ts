@@ -82,6 +82,11 @@ const getCacheItemByKey = async (key: string, requiredFields: string) : Promise<
   return handleCacheHit(cacheItem);
 };
 
+const getAllCacheItems = async () : Promise<CacheItem[]> => {
+  return await CacheDao.getAll();
+};
+
 export default {
-  getCacheItemByKey
+  getCacheItemByKey,
+  getAllCacheItems
 }

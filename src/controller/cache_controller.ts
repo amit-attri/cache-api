@@ -17,6 +17,17 @@ const getValueByKey = async (req : Request, res: Response) => {
   }
 };
 
+const getAllCacheItems = async (req : Request, res: Response) => {
+  try {
+    const cacheItems = await CacheService.getAllCacheItems();
+    Utils.sendSuccessResponse(res, cacheItems);
+  } catch(error) {
+    Logger.error(error);
+    Utils.handleErrorResponse(res, error);
+  }
+}
+
 export default {
-  getValueByKey
+  getValueByKey,
+  getAllCacheItems
 }
